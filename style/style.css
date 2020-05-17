@@ -1,130 +1,330 @@
 body {
     background: #E0FFFF;
     font-family: fantasy, sans-serif;
-}
-
-li {
-    list-style-type: none;
-}
-
-.answers-item label {
-    cursor: pointer;
-    border: 2px solid #000;
-    border-radius: 0 0 10px 10px;
-    min-width: 60px;
-    text-align: center;
-}
-
-.answers-item label:hover {
-    border: 2px solid rgba(0, 0, 0, 0.5);
-}
-
-input:checked + label {
-    border: 2px solid #3CB371;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.2;
     color: #3CB371;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
 }
 
-label span {
-    font-size: 14px;
+.visually-hidden{
+    visibility: hidden;
 }
 
-.answerImg {
-    width: 100%;
+.header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 40px;
+    padding: 1rem;
 }
 
-.answers-item {
-    width: 80px;
-}
-
-.logo-img {
+.header__logo {
     width: 50px;
     height: 50px;
     background: url('../image/burger.png') center no-repeat;
     background-size: contain;
 }
 
-.logo-text, .contacts, .main-title, .arrow {
-    color: #3CB371;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
+.header__title {
+    font-size: 2.5rem;
+    margin: .5rem 0 0;
+    font-weight: 500;
+    line-height: 48px;
+    -moz-text-size-adjust: 100%;
 }
 
-.content {
-    width: 300px;
-    height: 300px;
-    background: url('../image/burger-4026165_960_720.webp') center no-repeat;
-    background-size: 115%;
-}
-
-.modal {
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-    background: #E0FFFF;
-    /* color: #3CB371; */
-    /* -webkit-text-stroke-width: 1px; */
-    /* -webkit-text-stroke-color: black;  */
-}
-
-.btn-outline-danger {
-    background-color: inherit;
-    border: 1px solid #3CB371 !important;
-    color: #3CB371 !important;
-}
-
-.btn-outline-danger span {
-    font-size: 2rem !important;
-    color: #3CB371;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
-}
-
-.btn-outline-danger:hover,
-.btn-outline-danger:active,
-.btn-outline-danger:focus,
-.btn-outline-danger:visited {
-    background-color: #3CB371 !important;
-    color: black !important;
-}
-
-.btn-outline-danger:hover span,
-.btn-outline-danger:active span,
-.btn-outline-danger:focus span,
-.btn-outline-danger:visited span {
-    color: #E0FFFF !important;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
-}
-
-.burger {
+.burger-button {
     width: 30px;
     height: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+    margin: .5rem .5rem;
 }
 
-.burger__line {
+.burger-button__line {
     width: 30px;
     height: 5px;
     display: block;
-    background-color: #3CB371;
-    border: 2px solid #000;
+    background-color: #000000;
     transition: all 0.3s;
 }
 
-.burger.active span:nth-child(1) {
+.burger-button--active .burger-button__line:nth-child(1) {
     transform: rotate(45deg) translate(8px, 14px);
     background-color: yellow;
 }
 
-.burger.active span:nth-child(2) {
+.burger-button--active .burger-button__line:nth-child(2) {
     transform: rotate(45deg) translate(-1px, 5px);
 }
 
-.burger.active span:nth-child(3) {
+.burger-button--active .burger-button__line:nth-child(3) {
     transform: rotate(-45deg) translate(4px, -9px);
+}
 
+.greeting__wrapper {
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+.greeting__image {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    margin: 1rem auto 0;
+}
+
+.greeting__title {
+    text-align: center;
+    font-size: 2.5rem;
+    padding: 1rem 6rem 0;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0 0 .5rem;
+}
+
+.greeting__arrow {
+    font-size: 3.5rem;
+    font-weight: 300;
+    margin: 2rem auto 0;
+}
+
+.greeting__button {
+    margin: 1rem 6rem;
+    padding: .375rem .75rem;
+    background-color: inherit;
+    border: 1px solid #3CB371;
+    color: #3CB371;
+    font-size: 2rem;
+    border-radius: .25rem;
+    transition: all .15s ease-in-out;
+}
+
+.greeting__button:hover {
+    background-color: #3CB371;
+    color: #E0FFFF;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    -webkit-text-stroke-width: 0;
+}
+
+.modal--active {
+    display: flex;
+}
+
+.modal__wrapper {
+    position: relative;
+    width: 100%;
+    margin: .5rem;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    background-color: #E0FFFF;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .3rem;
+    outline: 0;
+}
+
+.modal__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 0 1rem;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: calc(.3rem - 1px);
+    border-top-right-radius: calc(.3rem - 1px);
+    width: 100%;
+}
+
+.modal__close {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    cursor: pointer;
+    border: none;
+    background: inherit;
+    font-family: inherit;
+    margin: 1rem 1rem 1rem 0;
+}
+
+.modal__title {
+    color: #212529;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 1rem 0 1rem 1rem;
+}
+
+.modal__main {
+    width: 100%;
+    margin: 1rem 1rem;
+}
+
+.modal__question {
+    color: #212529;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 1rem 0 0;
+    text-align: center;
+}
+
+.modal__answers {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 2rem 1rem 0 1rem;
+}
+
+.modal__answer-item {
+    display: flex;
+    width: 5.1rem;
+    justify-content: center;
+}
+
+.modal__radio {
+    display: none;
+}
+
+.modal__answer-title {
+    cursor: pointer;
+    border: 2px solid #000000;
+    border-radius: 0 0 0.625rem 0.625rem;
+    min-width: 3.75rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #000000;
+    font-size: 0.9rem;
+}
+
+.modal__answer-image {
+    width: 100%;
+}
+
+.modal__answer-title:hover {
+    border: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+.modal__radio:checked + .modal__answer-title {
+    border: 2px solid #3CB371;
+    color: #3CB371;
+}
+
+.modal__form-group{
+    font-size: 1.1rem;
+    color: #000000;
+}
+
+.modal__phone{
+    display: block;
+    margin: 1rem auto;
+}
+
+.modal__footer {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #dee2e6;
+    width: 100%;
+    margin: 1rem 1rem 0 1rem;
+    padding: 1rem 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.modal__button {
+    color: #fff;
+    background-color: #6c757d;
+    border: 1px solid #6c757d;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: all .15s ease-in-out;
+    margin-right: 1rem;
+    font-family: inherit;
+}
+
+.modal__button:hover {
+    color: #ffffff;
+    background-color: #5a6268;
+    border-color: #545b62;
+    cursor: pointer;
+}
+
+.modal__button:disabled {
+    cursor: inherit;
+    opacity: .65;
+}
+
+@media (min-width: 992px) {
+    .greeting__wrapper {
+        max-width: 960px;;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .greeting__wrapper {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 576px) {
+    .modal__wrapper {
+        max-width: 500px;
+        margin: 1.75rem auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 0;
+    }
+
+    .header__title {
+        font-size: 2rem;
+    }
+
+    .greeting__title {
+        font-size: 1.5rem;
+        padding: 0 3rem;
+        color: #000000;
+        -webkit-text-stroke-width: 0;
+    }
+
+    .greeting__button {
+        font-size: 1rem;
+        padding: 0.5rem .5rem;
+        color: #000000;
+        -webkit-text-stroke-width: 0;
+
+    }
 }
