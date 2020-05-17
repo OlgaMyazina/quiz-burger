@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const renderQuestion = (indexQuestions) => {
       //очищает варианты ответа
       formAnswers.innerHTML = '';
-      switch(numberQuestion){
+      switch (numberQuestion) {
         case 0:
           btnPrev.classList.add('visually-hidden');
           btnNext.classList.remove('visually-hidden');
@@ -202,8 +202,9 @@ document.addEventListener('DOMContentLoaded', function () {
           </div>
         `);
           break;
-        case questions.length+1:
+        case questions.length + 1:
           formAnswers.textContent = 'Спасибо за пройденный тест!';
+          btnSend.classList.add('visually-hidden');
           setTimeout(() => {
             burgerBtn.classList.remove('burger-button--active');
             modal.classList.remove('modal--active')
